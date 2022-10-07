@@ -2,7 +2,7 @@ package edu.escuelaing.arep;
 
 import static spark.Spark.*;
 
-public class HelloWorld {
+public class SparkApp{
  public static void main(String[] args) {
     port(getPort()); 
     secure("keystores/ecikeystore.p12", "arep123", null, null);
