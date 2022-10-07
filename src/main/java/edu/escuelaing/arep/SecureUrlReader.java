@@ -17,13 +17,12 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
 public class SecureUrlReader {
-
-    public static void main(String[] args) {
+    public static void loadTrustStore(String path, String passwd) {
         try {
 
             // Create a file and a password representation
-            File trustStoreFile = new File("keystores/ecikeystore.p12");
-            char[] trustStorePassword = "arep123".toCharArray();
+            File trustStoreFile = new File(path);
+            char[] trustStorePassword = passwd.toCharArray();
 
             // Load the trust store, the default type is "pkcs12", the alternative is "jks"
             KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -46,14 +45,7 @@ public class SecureUrlReader {
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, tmf.getTrustManagers(), null);
             SSLContext.setDefault(sslContext);
-
-            // We can now read this URL
-            readURL("https://localhost:5000/hello");
-
-            // This one can't be read because the Java default truststore has been 
-            // changed.
-            readURL("https://www.google.com");         
-        
+            
         } catch (KeyStoreException ex) {
             Logger.getLogger(SecureUrlReader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileNotFoundException ex) {
@@ -70,7 +62,8 @@ public class SecureUrlReader {
 
     }
 
-    public static void readURL(String sitetoread) {
+    public static String readURL(String sitetoread) {
+        String res="";
         try {
             // Crea el objeto que representa una URL2
             URL siteURL = new URL(sitetoread);
@@ -102,9 +95,11 @@ public class SecureUrlReader {
             String inputLine = null;
             while ((inputLine = reader.readLine()) != null) {
                 System.out.println(inputLine);
+                res += inputLine;
             }
         } catch (IOException x) {
             System.err.println(x);
         }
+        return res;
     }
 }
