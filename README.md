@@ -54,9 +54,9 @@ java -cp target/classes:target/dependency/* edu.escuelaing.arep.SparkAppTwo
 
 ## Video
 
-![Funcionamiento](https://drive.google.com/file/d/1ClkH_g6rMZLBTmRuUPGkpLQQ9tp1zPth/view?usp=sharing)
+.[FUNCIONAMIENTO](https://drive.google.com/file/d/1ClkH_g6rMZLBTmRuUPGkpLQQ9tp1zPth/view?usp=sharing)
 
 
 ## Licencia
 
-![LICENCIA](License.txt)
+.[LICENCIA](License.txt)
