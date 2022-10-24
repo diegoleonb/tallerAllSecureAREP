@@ -22,7 +22,7 @@ public class SparkApp{
         if (System.getenv("KEYSTORE") != null) {
             return System.getenv("KEYSTORE");
         }
-        return "keystores/ecikeystore.p12";
+        return "keystores/awskeystore.p12";
     }
 
     public static String getKeyStorePasswd(){
@@ -32,22 +32,8 @@ public class SparkApp{
         return "arep123";
     }
 
-    public static String getTrustStore() {
-        if (System.getenv("TRUSTSTORE") != null) {
-            return System.getenv("TRUSTSTORE");
-        }
-        return "./keystores/ecitruststore2.p12";
-    }
-
-    public static String getTrustStorePasswd() {
-        if (System.getenv("TRUSTSTOREPWD") != null) {
-            return System.getenv("TRUSTSTOREPWD");
-        }
-        return "arep123";
-    }
-
     public static String getUrl(){
-        return "https://localhost:5000/hello";
+        return "https://ec2-50-19-161-246.compute-1.amazonaws.com:5000/hello";
     }
 
 } 
